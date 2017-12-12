@@ -1,23 +1,18 @@
 ﻿using FractalPainting.Infrastructure.Common;
-using FractalPainting.Infrastructure.Injection;
 using FractalPainting.Infrastructure.UiActions;
 
 namespace FractalPainting.App.Actions
 {
-	public class ImageSettingsAction : IUiAction, INeed<IImageHolder>
+	public class ImageSettingsAction : IUiAction
 	{
-		private IImageHolder imageHolder;
+		private readonly IImageHolder imageHolder;
 		private readonly ImageSettings imageSettings;
 
-	    public ImageSettingsAction(ImageSettings imageSettings)
+	    public ImageSettingsAction(IImageHolder imageHolder, ImageSettings imageSettings)
 	    {
+	        this.imageHolder = imageHolder;
 	        this.imageSettings = imageSettings;
 	    }
-
-	    public void SetDependency(IImageHolder dependency)
-		{
-			imageHolder = dependency;
-		}
         
 		public string Category => "Настройки";
 		public string Name => "Изображение...";
