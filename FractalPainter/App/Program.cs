@@ -6,7 +6,7 @@ using FractalPainting.Infrastructure.Common;
 using FractalPainting.Infrastructure.UiActions;
 using Ninject;
 using Ninject.Extensions.Factory;
-
+using Ninject.Extensions.Conventions;
 
 
 namespace FractalPainting.App
@@ -25,11 +25,14 @@ namespace FractalPainting.App
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 IKernel kernel = new StandardKernel();
-                kernel.Bind<IUiAction>().To<SaveImageAction>();
-                kernel.Bind<IUiAction>().To<DragonFractalAction>();
-                kernel.Bind<IUiAction>().To<KochFractalAction>();
-                kernel.Bind<IUiAction>().To<ImageSettingsAction>();
-                kernel.Bind<IUiAction>().To<PaletteSettingsAction>();
+                //kernel.Bind<IUiAction>().To<SaveImageAction>();
+                //kernel.Bind<IUiAction>().To<DragonFractalAction>();
+                //kernel.Bind<IUiAction>().To<KochFractalAction>();
+                //kernel.Bind<IUiAction>().To<ImageSettingsAction>();
+                //kernel.Bind<IUiAction>().To<PaletteSettingsAction>();
+
+                kernel.Bind(x => x.FromThisAssembly().SelectAllClasses().InheritedFrom<IUiAction>().BindAllInterfaces());
+
                 kernel.Bind<IImageHolder, PictureBoxImageHolder>().To<PictureBoxImageHolder>().InSingletonScope();
                 kernel.Bind<Palette>().ToSelf().InSingletonScope();
 
