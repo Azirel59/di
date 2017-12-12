@@ -1,6 +1,4 @@
-﻿using FractalPainting.App.Fractals;
-
-namespace FractalPainting.App.Actions
+﻿namespace FractalPainting.App.Fractals
 {
     public interface IDragonPainterFactory
     {

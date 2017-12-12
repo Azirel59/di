@@ -88,7 +88,7 @@
       <DependentUpon>app.settings</DependentUpon>
     </Compile>
     <Compile Include="App\Actions\DragonFractalAction.cs" />
-    <Compile Include="App\Actions\IDragonPainterFactory.cs" />
+    <Compile Include="App\Fractals\IDragonPainterFactory.cs" />
     <Compile Include="App\Actions\ImageSettingsAction.cs" />
     <Compile Include="App\Actions\KochFractalAction.cs" />
     <Compile Include="App\Actions\PaletteSettingsAction.cs" />
@@ -111,7 +111,6 @@
     <Compile Include="Infrastructure\Common\IBlobStorage.cs" />
     <Compile Include="Infrastructure\Common\IImageDirectoryProvider.cs" />
     <Compile Include="Infrastructure\Common\IImageHolder.cs" />
-    <Compile Include="Infrastructure\Common\IImageSettingsProvider.cs" />
     <Compile Include="Infrastructure\Common\ImageSettings.cs" />
     <Compile Include="Infrastructure\Injection\INeed.cs" />
     <Compile Include="Infrastructure\Common\IObjectSerializer.cs" />

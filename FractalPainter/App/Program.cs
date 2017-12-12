@@ -34,6 +34,14 @@ namespace FractalPainting.App
                 kernel.Bind<Palette>().ToSelf().InSingletonScope();
 
                 kernel.Bind<IDragonPainterFactory>().ToFactory();
+                kernel.Bind<DragonSettingsGenerator>().ToMethod(c =>
+                    new DragonSettingsGenerator(new Random())
+                );
+
+                kernel.Bind<IObjectSerializer>().To<XmlObjectSerializer>();
+                kernel.Bind<IBlobStorage>().To<FileBlobStorage>();
+                kernel.Bind<AppSettings>().ToMethod(c => c.Kernel.Get<SettingsManager>().Load()).InSingletonScope();
+                kernel.Bind<ImageSettings>().ToMethod(c => c.Kernel.Get<AppSettings>().ImageSettings).InSingletonScope();
 
                 Application.Run(kernel.Get<MainForm>());
             }
