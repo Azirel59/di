@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TagsCloudContainer.WordProcessors
 {
-    public class BasicTransformProcessor: IWordProcessor
+    public abstract class BasicTransformProcessor: IWordProcessor
     {
         private readonly Func<string, string> transform;
 

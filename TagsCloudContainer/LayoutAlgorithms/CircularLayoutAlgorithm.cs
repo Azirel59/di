@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,12 @@ using TagsCloudVisualization;
 
 namespace TagsCloudContainer.LayoutAlgorithms
 {
+    [Description("Раскладка в круг методом \"Спираль + упаковка\"")]
     public class CircularLayoutAlgorithm: ILayoutAlgorithm
     {
-        private readonly CircularCloudLayouter layouter;
-
-        public CircularLayoutAlgorithm(CircularCloudLayouter layouter)
+        public Rectangle[] Layout(Point center, Size[] elements)
         {
-            this.layouter = layouter;
-        }
-
-        public Rectangle[] Layout(Size[] elements)
-        {
+            var layouter = new CircularCloudLayouter(center);
             foreach (var element in elements)
             {
                 layouter.PutNextRectangle(element);

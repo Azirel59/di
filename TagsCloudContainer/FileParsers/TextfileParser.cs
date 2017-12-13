@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ using TagsCloudContainer.WordStores;
 
 namespace TagsCloudContainer.FileParsers
 {
+    [Description("Базовый парсер для текстовых файлов, одно слово в строке")]
     public class TextFileParser: IFileParser
     {
         public IWordStore ParseFile(StreamReader reader)

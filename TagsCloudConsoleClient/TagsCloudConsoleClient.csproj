@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F4F0357C-79A5-4D13-A596-A08466F89A1F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TagsCloudContainer</RootNamespace>
-    <AssemblyName>TagsCloudContainer</AssemblyName>
+    <ProjectGuid>{0D6A0691-5C65-428E-A506-8482034A9AC0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TagsCloudConsoleClient</RootNamespace>
+    <AssemblyName>TagsCloudConsoleClient</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,16 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions, Version=4.15.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.15.0\lib\net45\FluentAssertions.dll</HintPath>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
     </Reference>
-    <Reference Include="FluentAssertions.Core, Version=4.15.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.15.0\lib\net45\FluentAssertions.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector">
+    <Reference Include="SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.4.0.12\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -53,31 +49,35 @@
     <Reference Include="System.Xml" />
     <Reference Include="TagsCloudVisualization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>asm\TagsCloudVisualization.dll</HintPath>
+      <HintPath>..\TagsCloudContainer\asm\TagsCloudVisualization.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Options\TagCloudOptions.cs" />
-    <Compile Include="TagsCloud.cs" />
-    <Compile Include="FileParsers\IFileParser.cs" />
-    <Compile Include="FileParsers\TextFileParser.cs" />
-    <Compile Include="LayoutAlgorithms\CircularLayoutAlgorithm.cs" />
-    <Compile Include="LayoutAlgorithms\ILayoutAlgorithm.cs" />
+    <Compile Include="Options\FileParserPicker.cs" />
+    <Compile Include="Options\LayoutAlgorithmPicker.cs" />
+    <Compile Include="Options\OptionInfo.cs" />
+    <Compile Include="Options\TagsCloudClientOptions.cs" />
+    <Compile Include="Options\WordProcessorPicker.cs" />
+    <Compile Include="Options\WordProcessorStack.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WordData.cs" />
-    <Compile Include="WordProcessors\BasicFilterProcessor.cs" />
-    <Compile Include="WordProcessors\BasicTransformProcessor.cs" />
-    <Compile Include="WordProcessors\IWordProcessor.cs" />
-    <Compile Include="WordProcessors\TrimSpacesProcessor.cs" />
-    <Compile Include="WordProcessors\ToLowerCaseProcessor.cs" />
-    <Compile Include="WordStores\IWordStore.cs" />
-    <Compile Include="WordStores\BasicWordStore.cs" />
+    <Compile Include="Options\OptionPicker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="asm\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TagsCloudContainer\TagsCloudContainer.csproj">
+      <Project>{F4F0357C-79A5-4D13-A596-A08466F89A1F}</Project>
+      <Name>TagsCloudContainer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="testWords.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

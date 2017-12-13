@@ -8,7 +8,7 @@ using TagsCloudContainer.WordStores;
 
 namespace TagsCloudContainer.WordProcessors
 {
-    public class BasicFilterProcessor: IWordProcessor
+    public abstract class BasicFilterProcessor: IWordProcessor
     {
         private readonly Func<string, bool> filter;
 
