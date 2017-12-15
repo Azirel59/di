@@ -12,14 +12,14 @@ namespace TagsCloudContainer.LayoutAlgorithms
     [Description("Раскладка в круг методом \"Спираль + упаковка\"")]
     public class CircularLayoutAlgorithm: ILayoutAlgorithm
     {
-        public Rectangle[] Layout(Point center, Size[] elements)
+        public IEnumerable<Rectangle> Layout(Point center, IEnumerable<Size> elements)
         {
             var layouter = new CircularCloudLayouter(center);
             foreach (var element in elements)
             {
                 layouter.PutNextRectangle(element);
             }
-            return layouter.WordRectangles.ToArray();
+            return layouter.WordRectangles;
         }
     }
 }

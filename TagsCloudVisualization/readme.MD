@@ -1,0 +1,1 @@
+Sample images can be found in the Samples folder.

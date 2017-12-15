@@ -10,7 +10,7 @@ using TagsCloudContainer.WordStores;
 namespace TagsCloudContainer.FileParsers
 {
     [Description("Базовый парсер для текстовых файлов, одно слово в строке")]
-    public class TextFileParser: IFileParser
+    public class SimpleTextFileParser: IFileParser
     {
         public IWordStore ParseFile(StreamReader reader)
         {

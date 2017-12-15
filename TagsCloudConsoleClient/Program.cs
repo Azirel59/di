@@ -13,7 +13,6 @@ using TagsCloudContainer.FileParsers;
 using TagsCloudContainer.LayoutAlgorithms;
 using TagsCloudContainer.WordProcessors;
 using TagsCloudContainer.WordStores;
-using TagsCloudVisualization;
 
 namespace TagsCloudConsoleClient
 {
@@ -100,7 +99,6 @@ namespace TagsCloudConsoleClient
                 );
                 var resultImage = cloudBuilder.CreateTagsCloud();
                 resultImage.Save(Options.ResultFileName);
-                Console.ReadKey();
             }
             catch (Exception ex)
             {

@@ -10,6 +10,6 @@ namespace TagsCloudContainer.LayoutAlgorithms
 {
     public interface ILayoutAlgorithm
     {
-        Rectangle[] Layout(Point center, Size[] elements);
+        IEnumerable<Rectangle> Layout(Point center, IEnumerable<Size> elements);
     }
 }

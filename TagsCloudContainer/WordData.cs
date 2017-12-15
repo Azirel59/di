@@ -11,7 +11,9 @@ namespace TagsCloudContainer
     {
         public string Word { get; set; }
         public long Frequency { get; set; }
+        public Size Size { get; set; }
         public Rectangle Rectangle { get; set; }
         public int FontSize { get; set; }
+        public Color Color { get; set; }
     }
 }
